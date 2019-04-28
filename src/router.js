@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import DiscussionsNew from "./views/DiscussionsNew.vue";
+import DiscussionsShow from "./views/DiscussionsShow.vue";
 
 Vue.use(Router);
 
@@ -18,6 +19,11 @@ export default new Router({
       path: "/discussions/new",
       name: "discussions/new",
       component: DiscussionsNew
+    },
+    {
+      path: "/discussions/:id",
+      name: "discussions/show",
+      component: DiscussionsShow
     },
     {
       path: "/about",
