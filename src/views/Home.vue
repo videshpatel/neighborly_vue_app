@@ -2,6 +2,7 @@
   <div class="home">
     <h1>All Discussions</h1>
     <div v-for="discussion in discussions">
+      <p>{{ discussion.channel.channel }}</p>
       <p>{{ discussion.title }}</p>
       <p>{{ discussion.content }}</p>
       <hr />
