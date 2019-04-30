@@ -5,20 +5,20 @@
       {{ error }}
     </div>
 
-    <form v-on:submit.prevent="updateRiscussion()">
+    <form v-on:submit.prevent="updateDiscussion()">
       <p>
         Title:
         <input type="text" v-model="discussion.title" />
       </p>
       <p>
-        Chef:
+        Content:
         <input type="text" v-model="discussion.content" />
       </p>
 
       <input type="submit" value="Update discussion" />
       <!-- <button>Make a new discussion</button> -->
     </form>
-    <button v-on:click="deleteRiscussion()">Delete discussion</button>
+    <button v-on:click="deleteDiscussion()">Delete discussion</button>
   </div>
 </template>
 
@@ -42,7 +42,7 @@ export default {
     });
   },
   methods: {
-    updateRiscussion: function() {
+    updateDiscussion: function() {
       console.log("making the new discussion");
       // make a request to the api to the create action
       // response = HTTP.get("/api/discussions")
@@ -66,7 +66,7 @@ export default {
           this.errors = error.response.data.errors;
         });
     },
-    deleteRiscussion: function() {
+    deleteDiscussion: function() {
       console.log("deleting the discussion...");
       // make an HTTP request using axios to the destroy action of my API
       axios.delete("/api/discussions/" + this.$route.params.id).then(response => {

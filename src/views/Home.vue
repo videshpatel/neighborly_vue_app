@@ -2,9 +2,13 @@
   <div class="home">
     <h1>All Discussions</h1>
     <div v-for="discussion in discussions">
+      <!--       <p>{{ discussion.channel.channel }}</p> -->
+
+      <p>
+        <router-link v-bind:to="'/discussions/' + discussion.id">{{ discussion.title }}</router-link>
+      </p>
       <p>{{ discussion.channel.channel }}</p>
-      <p>{{ discussion.title }}</p>
-      <p>{{ discussion.content }}</p>
+
       <hr />
     </div>
   </div>
