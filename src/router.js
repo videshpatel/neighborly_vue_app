@@ -10,8 +10,8 @@ import ChannelsShow from "./views/ChannelsShow.vue";
 import Channels from "./views/Channels.vue";
 import Replies from "./views/Replies.vue";
 import RepliesNew from "./views/RepliesNew.vue";
-// import RepliesEdit from "./views/RepliesEdit.vue";
-// import RepliesShow from "./views/RepliesShow.vue";
+import RepliesEdit from "./views/RepliesEdit.vue";
+import RepliesShow from "./views/RepliesShow.vue";
 
 import DiscussionsNew from "./views/DiscussionsNew.vue";
 import DiscussionsShow from "./views/DiscussionsShow.vue";
@@ -88,16 +88,16 @@ export default new Router({
       name: "replies/new",
       component: RepliesNew
     },
-    // {
-    //   path: "/replies/:id/edit",
-    //   name: "replies/edit",
-    //   component: RepliesEdit
-    // },
-    // {
-    //   path: "/replies/:id",
-    //   name: "replies/show",
-    //   component: RepliesShow
-    // },
+    {
+      path: "/replies/:id/edit",
+      name: "replies/edit",
+      component: RepliesEdit
+    },
+    {
+      path: "/replies/:id",
+      name: "replies/show",
+      component: RepliesShow
+    },
     {
       path: "/about",
       name: "about",

@@ -14,6 +14,10 @@
         Content:
         <input type="text" v-model="discussion.content" />
       </p>
+      <p>
+        Channel Name:
+        <input type="text" v-model="discussion.channel_id" />
+      </p>
 
       <input type="submit" value="Update discussion" />
       <!-- <button>Make a new discussion</button> -->
@@ -30,7 +34,8 @@ export default {
     return {
       discussion: {
         title: "",
-        content: ""
+        content: "",
+        channel: ""
       },
       errors: []
     };
@@ -49,7 +54,8 @@ export default {
       // discussions = reponse.parse
       var params = {
         title: this.discussion.title,
-        content: this.discussion.content
+        content: this.discussion.content,
+        channel: this.discussion.channel
       };
       console.log(params);
 

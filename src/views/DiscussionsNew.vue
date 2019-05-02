@@ -1,6 +1,8 @@
 <template>
   <div class="root">
-    New discussions page
+    <h4>New discussions page</h4>
+
+    <p></p>
     <div v-for="error in errors">
       {{ error }}
     </div>
@@ -12,15 +14,19 @@
       </p>
       <p>
         Content:
-        <input type="text" v-model="newDiscussionContent" />
+        <textarea v-model="newDiscussionContent" placeholder=""></textarea>
       </p>
       <p>
-        User ID:
-        <input type="text" v-model="newDiscussionUserID" />
+        <input type="hidden" v-model="newDiscussionUserID" />
       </p>
       <p>
-        Channel ID:
-        <input type="text" v-model="newDiscussionChannelID" />
+        Channel:
+        <select v-model="selected">
+          <option v-for="option in options" v-bind:value="option.value">
+            {{ option.text }}
+          </option>
+        </select>
+        <!-- <span>Selected: {{ selected }}</span> -->
       </p>
 
       <input type="submit" value="Make a new discussion" />
@@ -34,10 +40,19 @@ import axios from "axios";
 export default {
   data: function() {
     return {
+      selected: "",
+      options: [
+        { text: "General", value: "4" },
+        { text: "For Sale", value: "5" },
+        { text: "Wanted", value: "7" },
+        { text: "Crime & Safety", value: "8" },
+        { text: "Lost & Found", value: "9" },
+        { text: "Events", value: "10" },
+        { text: "Alerts!", value: "11" }
+      ],
       newDiscussionTitle: "",
       newDiscussionContent: "",
-      newDiscussionUserID: "1",
-      newDiscussionChannelID: "4",
+      newDiscussionUserID: "",
       errors: []
     };
   },
@@ -52,7 +67,7 @@ export default {
         title: this.newDiscussionTitle,
         content: this.newDiscussionContent,
         user_id: this.newDiscussionUserID,
-        channel_id: this.newDiscussionChannelID
+        channel_id: this.selected
       };
       axios
         .post("/api/discussions", params)

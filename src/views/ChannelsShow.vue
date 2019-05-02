@@ -1,8 +1,12 @@
 <template>
   <div class="root">
-    Channels show page.
-    <p>{{ channel.channel }}</p>
-    <router-link v-bind:to="'/channels/' + channel.id + '/edit'">Edit the channel</router-link>
+    <p>Showing posts for {{ channel.channel }}</p>
+
+    <div v-for="discussion in channel.discussions">
+      <router-link v-bind:to="'/discussions/' + discussion.id + '/'">{{ discussion.title }}</router-link>
+      <!--  {{ discussion.title }} -->
+    </div>
+    <p></p>
   </div>
 </template>
 

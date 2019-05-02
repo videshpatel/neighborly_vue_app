@@ -8,7 +8,7 @@
     <form v-on:submit.prevent="makeReply()">
       <p>
         Reply:
-        <input type="text" v-model="newReplyReply" />
+        <input type="text" v-model="newReply" />
       </p>
 
       <input type="submit" value="Make a new reply" />
@@ -22,7 +22,7 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      newReplyReply: "",
+      newReply: "",
 
       errors: []
     };
@@ -35,7 +35,7 @@ export default {
       // response = HTTP.get("/api/replies")
       // replies = reponse.parse
       var params = {
-        title: this.newReplyReply
+        title: this.newReply
       };
       axios
         .post("/api/replies", params)

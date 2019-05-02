@@ -1,15 +1,22 @@
 <template>
   <div class="home">
-    <h1>All Discussions</h1>
+    <h4>All Discussions</h4>
+
+    <input type="text" v-model="titleFilter" list="titles" />
+    <datalist id="titles">
+      <option v-for="discussion in discussions">{{ discussion.title }}</option>
+    </datalist>
+
     <div v-for="discussion in discussions">
       <!--       <p>{{ discussion.channel.channel }}</p> -->
 
-      <p>
-        <router-link v-bind:to="'/discussions/' + discussion.id">{{ discussion.title }}</router-link>
-      </p>
-      <p>{{ discussion.channel.channel }}</p>
+      <router-link v-bind:to="'/discussions/' + discussion.id">{{ discussion.title }}</router-link>
 
-      <hr />
+      Located in:
+      <router-link v-bind:to="'/channels/' + discussion.channel_id">{{ discussion.channel }}</router-link>
+
+      <p></p>
+      <p></p>
     </div>
   </div>
 </template>
@@ -20,6 +27,7 @@ import axios from "axios";
 export default {
   data: function() {
     return {
+      titleFilter: "",
       discussions: []
     };
   },
