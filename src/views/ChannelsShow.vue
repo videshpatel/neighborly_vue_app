@@ -5,8 +5,8 @@
     <div v-for="discussion in channel.discussions">
       <router-link v-bind:to="'/discussions/' + discussion.id + '/'">{{ discussion.title }}</router-link>
       <!--  {{ discussion.title }} -->
+      <p></p>
     </div>
-    <p></p>
   </div>
 </template>
 

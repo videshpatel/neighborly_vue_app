@@ -1,7 +1,6 @@
 <template>
   <div class="root">
     <h4>New discussions page</h4>
-
     <p></p>
     <div v-for="error in errors">
       {{ error }}

@@ -1,11 +1,8 @@
 <template>
   <div class="root">
     New channels page
-    <div v-for="error in errors">
-      {{ error }}
-    </div>
-
     <form v-on:submit.prevent="makeChannel()">
+      <li class="text-danger" v-for="error in errors">{{ error }}</li>
       <p>
         Channel:
         <input type="text" v-model="newChannelChannel" />
@@ -45,7 +42,6 @@ export default {
         })
         .catch(error => {
           console.log("things are going poorly");
-          console.log(error.response.data.errors);
           this.errors = error.response.data.errors;
         });
     }

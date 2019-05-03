@@ -1,20 +1,15 @@
 <template>
   <div class="home">
     <h4>All Discussions</h4>
-
     <input type="text" v-model="titleFilter" list="titles" />
     <datalist id="titles">
       <option v-for="discussion in discussions">{{ discussion.title }}</option>
     </datalist>
-
     <div v-for="discussion in discussions">
-      <!--       <p>{{ discussion.channel.channel }}</p> -->
-
       <router-link v-bind:to="'/discussions/' + discussion.id">{{ discussion.title }}</router-link>
-
       Located in:
       <router-link v-bind:to="'/channels/' + discussion.channel_id">{{ discussion.channel }}</router-link>
-
+      {{ discussions.user }}
       <p></p>
       <p></p>
     </div>
