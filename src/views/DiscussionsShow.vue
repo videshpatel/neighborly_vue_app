@@ -1,28 +1,59 @@
 <template>
-  <div class="home">
-    Discussions show page.
+  <!--Main layout-->
 
-    <p>{{ discussion.title }}</p>
-    <p>{{ discussion.content }}</p>
+  <main>
+    <div class="container">
+      <section class="pt-5">
+        <a href="discussions/new"><Strong>Create a new discussion</Strong></a>
 
-    <div v-for="reply in discussion.replies">
-      {{ reply.reply }}
-      <!-- array called discussions.replies -->
-      <!--      <router-link v-bind:to="'/discussions/' + discussion.id + '/'">{{ reply.reply }}</router-link> -->
+        <hr class="mb-5" />
+
+        <!--Grid row-->
+        <div class="row wow fadeIn">
+          <!--Grid column-->
+          <div class="col-lg-3 col-xl-3 mb-3">
+            <!--  <p align="left">{{ discussion}}</p> -->
+            <p align="left">{{ discussion.created_at }}</p>
+            <p align="left">{{ discussion.user.username }}</p>
+            <p></p>
+            <img v-bind:src="discussion.image" />
+            <p></p>
+          </div>
+          <div class="col-lg-7 col-xl-7 ml-xl-4 mb-4">
+            <h3 class="mb-3 font-weight-bold dark-grey-text">
+              <strong>
+                <router-link v-bind:to="'/discussions/' + discussion.id">{{ discussion.title }}</router-link>
+              </strong>
+            </h3>
+            {{ discussion.content }}
+            <p></p>
+            <p class="grey-text">
+              Located in:
+              <router-link v-bind:to="'/channels/' + discussion.channel_id">{{ discussion.channel }}</router-link>
+            </p>
+            <form v-on:submit.prevent="makeReply()">
+              Reply:
+              <div class="md-form md-outline">
+                <textarea v-model="newReplyReply" class="md-textarea form-control" rows="3"></textarea>
+                <label for="form75"></label>
+              </div>
+
+              <input type="hidden" v-model="CurrentUser" />
+              <input type="hidden" v-model="DiscussionId" />
+
+              <input type="button" value="Make a new reply" />
+
+              <!-- <button>Make a new reply</button> -->
+            </form>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+
+        <!--Pagination-->
+      </section>
     </div>
-
-    <form v-on:submit.prevent="makeReply()">
-      <p>
-        Reply:
-        <input type="text" v-model="newReplyReply" />
-        <input type="hidden" v-model="CurrentUser" />
-        <input type="hidden" v-model="DiscussionId" />
-      </p>
-
-      <input type="submit" value="Make a new reply" />
-      <!-- <button>Make a new reply</button> -->
-    </form>
-  </div>
+  </main>
 </template>
 
 <script>

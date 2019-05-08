@@ -16,6 +16,12 @@ import RepliesShow from "./views/RepliesShow.vue";
 import DiscussionsNew from "./views/DiscussionsNew.vue";
 import DiscussionsShow from "./views/DiscussionsShow.vue";
 import DiscussionsEdit from "./views/DiscussionsEdit.vue";
+import Discussions from "./views/Discussions.vue";
+
+import Events from "./views/Events.vue";
+import EventsNew from "./views/EventsNew.vue";
+// import EventsEdit from "./views/EventsEdit.vue";
+// import EventsShow from "./views/EventsShow.vue";
 
 Vue.use(Router);
 
@@ -42,6 +48,11 @@ export default new Router({
       path: "/logout",
       name: "logout",
       component: Logout
+    },
+    {
+      path: "/discussions",
+      name: "discussions",
+      component: Discussions
     },
     {
       path: "/discussions/new",
@@ -98,6 +109,27 @@ export default new Router({
       name: "replies/show",
       component: RepliesShow
     },
+    {
+      path: "/events/",
+      name: "events/",
+      component: Events
+    },
+    {
+      path: "/events/new",
+      name: "events/new",
+      component: EventsNew
+    },
+    // {
+    //   path: "/events/:id/edit",
+    //   name: "events/edit",
+    //   component: EventsEdit
+    // },
+    // {
+    //   path: "/events/:id",
+    //   name: "events/show",
+    //   component: EventsShow
+    // },
+
     {
       path: "/about",
       name: "about",

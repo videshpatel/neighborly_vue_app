@@ -1,13 +1,45 @@
 <template>
-  <div class="root">
-    <p>Showing posts for {{ channel.channel }}</p>
+  <main>
+    <div class="container">
+      <section class="pt-5">
+        <b>
+          <strong class="blue-text">Showing posts for {{ channel.channel }}</strong>
+        </b>
+        <div v-for="error in errors">
+          {{ error }}
+        </div>
+        <div v-for="discussion in channel.discussions">
+          <hr class="mb-5" />
 
-    <div v-for="discussion in channel.discussions">
-      <router-link v-bind:to="'/discussions/' + discussion.id + '/'">{{ discussion.title }}</router-link>
-      <!--  {{ discussion.title }} -->
-      <p></p>
+          <!--Grid row-->
+          <div class="row wow fadeIn">
+            <!--Grid column-->
+            <div class="col-lg-3 col-xl-3 mb-3">
+              <!--  <p align="left">{{ discussion}}</p> -->
+              <!--  <p align="left">{{ discussion.created_at }}</p> -->
+              <p></p>
+              <img v-bind:src="discussion.image" />
+              <p></p>
+            </div>
+            <div class="col-lg-7 col-xl-7 ml-xl-4 mb-4">
+              <h3 class="mb-3 font-weight-bold dark-grey-text">
+                <strong>
+                  <router-link v-bind:to="'/discussions/' + discussion.id + '/'">{{ discussion.title }}</router-link>
+                </strong>
+              </h3>
+              {{ discussion.content }}
+              <p></p>
+              <p class="grey-text"></p>
+            </div>
+            <!--Grid column-->
+          </div>
+          <!--Grid row-->
+
+          <!--Pagination-->
+        </div>
+      </section>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>

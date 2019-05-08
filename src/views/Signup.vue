@@ -1,7 +1,93 @@
 <template>
   <div class="signup">
     <div class="container">
-      <form v-on:submit.prevent="submit()">
+      <section class="section-preview">
+        <!-- Extended default form grid -->
+        <div class="container">
+          <div class="row valign-wrapper">
+            <div class="card text-center" style="width: 65rem;">
+              <div class="card-body">
+                <form v-on:submit.prevent="submit()">
+                  <ul>
+                    <li class="text-danger" v-for="error in errors">{{ error }}</li>
+                  </ul>
+                  <!-- Grid row -->
+                  <div class="form-row">
+                    <!-- Default input -->
+                    <div class="form-group col-md-6">
+                      <label for="inputUsername" class="active">Username</label>
+                      <input type="text" class="form-control" v-model="username" placeholder="Username" />
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputEmail4" class="active">Email</label>
+                      <input type="email" class="form-control" v-model="email" placeholder="Email" />
+                    </div>
+                    <!-- Default input -->
+                    <div class="form-group col-md-6">
+                      <label for="inputPassword4" class="active">Password</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        v-model="password"
+                        placeholder="Password"
+                        autocomplete="off"
+                      />
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputPassword4" class="active">Confirm Password</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        v-model="passwordConfirmation"
+                        placeholder="Password"
+                        autocomplete="off"
+                      />
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputUsername" class="active">Full Name</label>
+                      <input type="text" class="form-control" v-model="name" placeholder="Username" />
+                    </div>
+                  </div>
+                  <!-- Grid row -->
+
+                  <!-- Default input -->
+                  <div class="form-group">
+                    <label for="inputAddress" class="active">Address</label>
+                    <input type="text" class="form-control" v-model="street_1" placeholder="1234 Main St" />
+                  </div>
+                  <!-- Default input -->
+                  <div class="form-group">
+                    <label for="inputAddress2" class="active">Address 2</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="street_2"
+                      placeholder="Apartment, studio, or floor"
+                    />
+                  </div>
+                  <!-- Grid row -->
+                  <div class="form-row">
+                    <!-- Default input -->
+                    <div class="form-group col-md-6">
+                      <label for="inputCity" class="active">City</label>
+                      <input type="text" class="form-control" v-model="city" placeholder="New York City" />
+                    </div>
+                    <!-- Default input -->
+                    <div class="form-group col-md-6">
+                      <label for="inputZip" class="active">Zip</label>
+                      <input type="text" class="form-control" v-model="postal_code" placeholder="11206" />
+                    </div>
+                  </div>
+                  <!-- Grid row -->
+                  <button type="submit" class="btn btn-primary btn-md waves-effect waves-light">Signup</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Extended default form grid -->
+      </section>
+      <!--       <form v-on:submit.prevent="submit()">
         <h1>Signup</h1>
         <ul>
           <li class="text-danger" v-for="error in errors">{{ error }}</li>
@@ -51,7 +137,7 @@
           <input type="text" class="form-control" v-model="country" />
         </div>
         <input type="submit" class="btn btn-primary" value="Submit" />
-      </form>
+      </form> -->
     </div>
   </div>
 </template>

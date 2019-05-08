@@ -1,19 +1,22 @@
-<template>
-  <div class="home">
-    <h4>All Discussions</h4>
-    <input type="text" v-model="titleFilter" list="titles" />
-    <datalist id="titles">
-      <option v-for="discussion in discussions">{{ discussion.title }}</option>
-    </datalist>
-    <div v-for="discussion in discussions">
-      <router-link v-bind:to="'/discussions/' + discussion.id">{{ discussion.title }}</router-link>
-      Located in:
-      <router-link v-bind:to="'/channels/' + discussion.channel_id">{{ discussion.channel }}</router-link>
-      {{ discussions.user }}
-      <p></p>
-      <p></p>
+<template style="background-image: url(/img/neighborhood.jpg)">
+  <section class="card blue-gradient wow fadeIn" id="intro">
+    <!-- Content -->
+    <div class="card-body text-white text-center py-5 px-5 my-5">
+      <h1 class="mb-4">
+        Neighborly
+      </h1>
+      <p>
+        <strong>Welcome to the Neighborly community</strong>
+      </p>
+      <p class="mb-4">
+        <strong></strong>
+      </p>
+      <a target="" href="/login/" class="btn btn-outline-white btn-lg">
+        Click Here to Login
+      </a>
     </div>
-  </div>
+    <!-- Content -->
+  </section>
 </template>
 
 <script>
@@ -22,15 +25,30 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      titleFilter: "",
-      discussions: []
+      email: "",
+      password: "",
+      errors: []
     };
   },
-  created: function() {
-    axios.get("/api/discussions").then(response => {
-      this.discussions = response.data;
-    });
-  },
-  methods: {}
+  methods: {
+    submit: function() {
+      var params = {
+        email: this.email,
+        password: this.password
+      };
+      axios
+        .post("/api/sessions", params)
+        .then(response => {
+          axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
+          localStorage.setItem("jwt", response.data.jwt);
+          this.$router.push("/discussions");
+        })
+        .catch(error => {
+          this.errors = ["Invalid email or password."];
+          this.email = "";
+          this.password = "";
+        });
+    }
+  }
 };
 </script>

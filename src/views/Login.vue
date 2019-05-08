@@ -1,21 +1,35 @@
 <template>
   <div class="login">
     <div class="container">
-      <form v-on:submit.prevent="submit()">
-        <h1>Login</h1>
-        <ul>
-          <li class="text-danger" v-for="error in errors">{{ error }}</li>
-        </ul>
-        <div class="form-group">
-          <label>Email:</label>
-          <input type="email" class="form-control" v-model="email" />
+      <div class="container">
+        <div class="row valign-wrapper">
+          <div class="card text-center" style="width: 25rem;">
+            <div class="card-body">
+              <form v-on:submit.prevent="submit()">
+                <h1>Login</h1>
+                <ul>
+                  <li class="text-danger" v-for="error in errors">{{ error }}</li>
+                </ul>
+                <div class="form-group">
+                  <label>Email:</label>
+                  <input type="email" class="form-control" v-model="email" />
+                </div>
+                <div class="form-group">
+                  <label>Password:</label>
+                  <input type="password" class="form-control" v-model="password" />
+                </div>
+                <input type="submit" class="btn btn-primary" value="Submit" />
+              </form>
+              <div class="text-center">
+                <h6 class="grey-text">
+                  Not a User?
+                  <a href="/Signup">Sign Up</a>
+                </h6>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Password:</label>
-          <input type="password" class="form-control" v-model="password" />
-        </div>
-        <input type="submit" class="btn btn-primary" value="Submit" />
-      </form>
+      </div>
     </div>
   </div>
 </template>
@@ -42,7 +56,7 @@ export default {
         .then(response => {
           axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
-          this.$router.push("/");
+          this.$router.push("/discussions");
         })
         .catch(error => {
           this.errors = ["Invalid email or password."];

@@ -15,6 +15,10 @@
         <input type="text" v-model="discussion.content" />
       </p>
       <p>
+        Image:
+        <input type="text" v-model="discussion.image" />
+      </p>
+      <p>
         Channel Name:
         <input type="text" v-model="discussion.channel_id" />
       </p>
@@ -35,6 +39,7 @@ export default {
       discussion: {
         title: "",
         content: "",
+        image: "",
         channel: ""
       },
       errors: []
@@ -55,6 +60,7 @@ export default {
       var params = {
         title: this.discussion.title,
         content: this.discussion.content,
+        image: this.discussion.image,
         channel: this.discussion.channel
       };
       console.log(params);

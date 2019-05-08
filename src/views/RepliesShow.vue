@@ -3,7 +3,15 @@
     <p>Showing posts for {{ reply.reply }}</p>
 
     <div v-for="discussion in reply.discussions">
-      {{ discussion.title }}
+      <div class="container">
+        <div class="row valign-wrapper">
+          <div class="card text-center" style="width: 35rem;">
+            <div class="card-body">
+              {{ discussion.title }}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <p></p>
   </div>

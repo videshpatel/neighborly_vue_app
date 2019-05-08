@@ -12,6 +12,7 @@
     "bootstrap-vue": "^2.0.0-rc.19",
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
+    "vue-event-calendar": "^1.5.2",
     "vue-router": "^3.0.3",
     "vue2-filters": "^0.6.0"
   },

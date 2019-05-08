@@ -1,36 +1,49 @@
 <template>
   <div class="root">
-    <h4>New discussions page</h4>
     <p></p>
     <div v-for="error in errors">
       {{ error }}
     </div>
+    <div class="container">
+      <div class="row valign-wrapper">
+        <div class="card text-center" style="width: 45rem;">
+          <div class="card-body">
+            <form v-on:submit.prevent="makeDiscussion()">
+              <p>
+                Title:
+                <input class="form-control" type="text" v-model="newDiscussionTitle" placeholder="Enter title" />
+              </p>
 
-    <form v-on:submit.prevent="makeDiscussion()">
-      <p>
-        Title:
-        <input type="text" v-model="newDiscussionTitle" />
-      </p>
-      <p>
-        Content:
-        <textarea v-model="newDiscussionContent" placeholder=""></textarea>
-      </p>
-      <p>
-        <input type="hidden" v-model="newDiscussionUserID" />
-      </p>
-      <p>
-        Channel:
-        <select v-model="selected">
-          <option v-for="option in options" v-bind:value="option.value">
-            {{ option.text }}
-          </option>
-        </select>
-        <!-- <span>Selected: {{ selected }}</span> -->
-      </p>
+              Message:
+              <div class="md-form md-outline">
+                <textarea v-model="newDiscussionContent" class="md-textarea form-control" rows="3"></textarea>
+                <label for="form75"></label>
+              </div>
 
-      <input type="submit" value="Make a new discussion" />
-      <!-- <button>Make a new discussion</button> -->
-    </form>
+              <p>
+                Title:
+                <input class="form-control" type="text" v-model="newDiscussionImage" placeholder="Enter image URL" />
+              </p>
+              <p>
+                <input type="hidden" v-model="newDiscussionUserID" />
+              </p>
+              <p>
+                Channel:
+                <select v-model="selected">
+                  <option v-for="option in options" v-bind:value="option.value">
+                    {{ option.text }}
+                  </option>
+                </select>
+                <!-- <span>Selected: {{ selected }}</span> -->
+              </p>
+
+              <input type="submit" value="Make a new discussion" />
+              <!-- <button>Make a new discussion</button> -->
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -41,17 +54,18 @@ export default {
     return {
       selected: "",
       options: [
-        { text: "General", value: "4" },
-        { text: "For Sale", value: "5" },
-        { text: "Wanted", value: "7" },
-        { text: "Crime & Safety", value: "8" },
-        { text: "Lost & Found", value: "9" },
-        { text: "Events", value: "10" },
-        { text: "Alerts!", value: "11" }
+        { text: "General", value: "13" },
+        { text: "For Sale", value: "14" },
+        { text: "Wanted", value: "15" },
+        { text: "Crime & Safety", value: "16" },
+        { text: "Lost & Found", value: "17" },
+        { text: "Events", value: "18" },
+        { text: "Alerts!", value: "19" }
       ],
       newDiscussionTitle: "",
       newDiscussionContent: "",
       newDiscussionUserID: "",
+      newDiscussionImage: "",
       errors: []
     };
   },
@@ -65,6 +79,7 @@ export default {
       var params = {
         title: this.newDiscussionTitle,
         content: this.newDiscussionContent,
+        image: this.newDiscussionImage,
         user_id: this.newDiscussionUserID,
         channel_id: this.selected
       };
@@ -73,7 +88,7 @@ export default {
         .then(response => {
           console.log("things are going well");
           console.log(response);
-          this.$router.push("/");
+          this.$router.push("/discussions");
         })
         .catch(error => {
           console.log("things are going poorly");
