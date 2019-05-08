@@ -4,8 +4,6 @@
   <main>
     <div class="container">
       <section class="pt-5">
-        <a href="discussions/new"><Strong>Create a new discussion</Strong></a>
-
         <hr class="mb-5" />
 
         <!--Grid row-->
@@ -31,15 +29,30 @@
               Located in:
               <router-link v-bind:to="'/channels/' + discussion.channel_id">{{ discussion.channel }}</router-link>
             </p>
-            <form v-on:submit.prevent="makeReply()">
-              Reply:
-              <div class="md-form md-outline">
-                <textarea v-model="newReplyReply" class="md-textarea form-control" rows="3"></textarea>
-                <label for="form75"></label>
-              </div>
+            <strong>Replies:</strong>
+            <hr />
+            <P></P>
+            <P></P>
+            <div v-for="reply in discussion.replies">
+              {{ reply.reply }}
+              {{ discussion.replyuser }}
+              <hr />
+              <!--   {{ reply.created_at }} -->
 
-              <input type="hidden" v-model="CurrentUser" />
-              <input type="hidden" v-model="DiscussionId" />
+              <!--         {{ reply.time_ago_in_words(post.created_at) }} -->
+              <!--               {{ reply.time_ago_in_words(created_at) }} -->
+              <p></p>
+              <!-- array called discussions.replies -->
+              <!--      <router-link v-bind:to="'/discussions/' + discussion.id + '/'">{{ reply.reply }}</router-link> -->
+            </div>
+
+            <form v-on:submit.prevent="makeReply()">
+              <p>
+                Reply:
+                <input type="message" v-model="newReplyReply" style="width:500px; height:100px;" />
+                <input type="hidden" v-model="CurrentUser" />
+                <input type="hidden" v-model="DiscussionId" />
+              </p>
 
               <input type="button" value="Make a new reply" />
 
@@ -97,7 +110,7 @@ export default {
         .then(response => {
           console.log("things are going well");
           console.log(response);
-          this.$router.push("/");
+          this.$router.push("/discussions/");
         })
         .catch(error => {
           console.log("things are going poorly");
