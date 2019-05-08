@@ -82,7 +82,7 @@ export default {
       console.log("deleting the discussion...");
       // make an HTTP request using axios to the destroy action of my API
       axios.delete("/api/discussions/" + this.$route.params.id).then(response => {
-        this.$router.push("/");
+        this.$router.push("/discussions");
       });
     }
   }

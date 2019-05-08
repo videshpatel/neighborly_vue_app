@@ -11,8 +11,7 @@
           <!--Grid column-->
           <div class="col-lg-3 col-xl-3 mb-3">
             <!--  <p align="left">{{ discussion}}</p> -->
-            <p align="left">{{ discussion.created_at }}</p>
-            <p align="left">{{ discussion.user.username }}</p>
+
             <p></p>
             <img v-bind:src="discussion.image" />
             <p></p>

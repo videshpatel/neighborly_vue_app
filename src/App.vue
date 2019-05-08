@@ -61,11 +61,6 @@
                     Events
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">
-                    Free tutorials
-                  </a>
-                </li>
               </ul>
 
               <!-- Right -->
